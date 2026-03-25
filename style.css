@@ -32,7 +32,7 @@ body, html {
 .pulse-heart {
     font-size: 5rem;
     cursor: pointer;
-    position: absolute; /* Permite el movimiento libre */
+    position: absolute;
     z-index: 100;
     filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.8));
     animation: heartbeat 1.2s infinite ease-in-out;
@@ -45,17 +45,21 @@ body, html {
     50% { transform: scale(1.2); }
 }
 
-/* Letras de la canción con Neón */
+/* Letras de la canción con Montserrat (Más legible) */
 #lyrics-text {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3.2rem;
+    font-family: 'Montserrat', sans-serif; /* Cambio a Montserrat */
+    font-weight: 700;
+    font-size: 2.8rem;
     text-align: center;
     min-height: 150px;
     transition: all 0.5s ease;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px #ff69b4;
+    /* Neón más enfocado para lectura clara */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px #ff69b4;
     padding: 0 20px;
     z-index: 50;
     position: relative;
+    text-transform: uppercase; /* Opcional: le da un toque moderno */
+    letter-spacing: 2px;
 }
 
 /* Flores Rosadas */

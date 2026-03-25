@@ -3,7 +3,7 @@ const lyricsText = document.getElementById('lyrics-text');
 const heart = document.getElementById('heart-portal');
 const starsContainer = document.getElementById('stars-container');
 
-// Tiempos exactos convertidos de LRC
+// Tiempos exactos sincronizados
 const lyricsData = [
     { time: 38.19, text: "Baby, I'm gonna do better for you because" },
     { time: 49.62, text: "I love you with my heart" },
@@ -28,27 +28,23 @@ const lyricsData = [
     { time: 210.03, text: "" }
 ];
 
-// Lógica del Corazón Viajero
+// Movimiento del corazón
 let posX = window.innerWidth / 2;
 let posY = window.innerHeight / 2;
-let velX = 1.5; // Velocidad X
-let velY = 1.3; // Velocidad Y
+let velX = 1.5; 
+let velY = 1.3; 
 
 function moveHeart() {
     posX += velX;
     posY += velY;
-
-    // Rebote en bordes
     if (posX + heart.clientWidth >= window.innerWidth || posX <= 0) velX *= -1;
     if (posY + heart.clientHeight >= window.innerHeight || posY <= 0) velY *= -1;
-
     heart.style.left = posX + 'px';
     heart.style.top = posY + 'px';
-
     requestAnimationFrame(moveHeart);
 }
 
-// Sincronización de Letras
+// Control de letras
 audio.addEventListener('timeupdate', () => {
     const currentTime = audio.currentTime;
     const currentLine = lyricsData.find((line, index) => {
@@ -65,7 +61,6 @@ audio.addEventListener('timeupdate', () => {
     }
 });
 
-// Generadores de Partículas
 function createFlower() {
     const flower = document.createElement('div');
     flower.className = 'flower';
@@ -101,11 +96,10 @@ function createStars() {
     }
 }
 
-// Iniciar Experiencia al clic
 heart.addEventListener('click', () => {
     if (audio.paused) {
         audio.play();
-        moveHeart(); // Activa el rebote
+        moveHeart();
         createStars();
         setInterval(createFlower, 800);
         setInterval(createTeAmo, 1200);
